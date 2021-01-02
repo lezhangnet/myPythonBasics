@@ -8,6 +8,7 @@ Created on Mon Feb  4 12:01:21 2019
 
 201226
 This generates some fake logs by reading from a csv file and writes to /var/....log file.
+usage: sudo python3 LogGenerator.py
 source: AWS BigData video
 original OnlineRetail.csv has 541k lines vs 10 lines here
 """
@@ -17,6 +18,7 @@ import time
 import sys
 
 sourceData = "OnlineRetail.csv"
+destFileName = "/var/log/zhaleKinesisTest/%Y%m%d-%H%M%S.log" # need to create the folder manually first?
 placeholder = "LastLine.txt"
 
 def GetLineCount():
@@ -31,7 +33,7 @@ def GetLineCount():
 # numLines: how many lines still need to write
 def MakeLog(startLine, numLines):
     print("MakeLog(): " + str(startLine) + ";" + str(numLines))
-    destData = time.strftime("/var/log/cadabra/%Y%m%d-%H%M%S.log")
+    destData = time.strftime(destFileName)
     with open(sourceData, 'r') as csvfile:
         # with open(destData, 'w') as dstfile: # (over)write
         with open(destData, 'a') as dstfile: # append
