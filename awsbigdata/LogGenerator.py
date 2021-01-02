@@ -18,14 +18,16 @@ import time
 import sys
 
 sourceData = "OnlineRetail.csv"
-destFileName = "/var/log/zhaleKinesisTest/%Y%m%d-%H%M%S.log" # need to create the folder manually first?
+destFileName = "/var/log/zhaleKinesisTest/%Y%m%d-%H%M%S.log" # need to create the folder manually first? even with sudo
 placeholder = "LastLine.txt"
 
 def GetLineCount():
     with open(sourceData) as f:
         print("open() ok. f:" + str(f))
         for i, l in enumerate(f):
-            print("enumerate():" + str(i) + ";" + str(l)) # l is the content of the line: 536365,85123A,WHITE HANGING HEART T-LIGHT HOLDER,6,12/1/2010 8:26,2.55,17850,United Kingdom
+            # print("enumerate():" + str(i) + ";" + str(l))
+            # enumerate():541894;581586,20685,DOORMAT RED RETROSPOT,10,12/9/2011 12:49,7.08,13113,United Kingdom
+            # l is the content of the line
             pass
     return i # will error if empty file: UnboundLocalError: local variable 'i' referenced before assignment
 
